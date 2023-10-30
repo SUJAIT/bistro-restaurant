@@ -1,5 +1,7 @@
 
 import { createBrowserRouter } from 'react-router-dom';
+import Login from '../Authentication/Login';
+import Register from '../Authentication/Register';
 import Home from '../Page/Home';
 import Main from '../Page/Main';
 import Menu from '../Page/Menu/Menu';
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
         {
           path:"order/:category", //daynamic route
           element:<Order></Order>
+        },
+        {
+          path:"login",
+          element:<Login></Login>
+        },
+        {
+          path:"register",
+          element:<Register></Register>
         }
     ]
   }

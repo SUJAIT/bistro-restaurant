@@ -1,14 +1,16 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../Sheared/Footer';
 import NavBar from '../Sheared/NavBar';
 
 const Main = () => {
+    const location = useLocation();
+    const noHeaderFooter = location.pathname.includes('login')
     return (
         <div>
-            <NavBar></NavBar>
+          { noHeaderFooter || <NavBar></NavBar>}  {/* condition ja noHeaderFooter takla nav tag deka ba na */}
             <Outlet></Outlet>
-           <Footer></Footer>
+          {noHeaderFooter || <Footer></Footer>}   {/* condition ja noHeaderFooter takla Footer tag deka ba na */}
         </div>
     );
 };
