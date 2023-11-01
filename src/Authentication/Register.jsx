@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import { AuthContext } from "../ContextApi/AuthProvider";
 import useTitle from "../Sheared/Title";
 
@@ -12,25 +13,40 @@ const Register = () => {
 
   useTitle("Sign in")
 
+  const navigate = useNavigate();
   // react hook 
-    const {
+  const {
     register,
     handleSubmit,
-  
+    reset,
     formState: { errors },
   } = useForm()
-// firbase working
-  const {createUser} = useContext(AuthContext);
+  // firbase working
+  const { createUser,updateUserProfile } = useContext(AuthContext);
   const onSubmit = (data) => {
     console.log(data)
     // firbase working
     createUser(data.email, data.password)
-    .then(result => {
-      const loggedUser = result.user;
-      console.log(loggedUser)
-    })
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser)
+        updateUserProfile(data.name, data.photoURL)
+        .then(()=>{
+          console.log('user profile Updated')
+          reset()
+          Swal.fire({
+  position: 'top-center',
+  icon: 'success',
+  title: 'User Profile Updated Succesfully',
+  showConfirmButton: false,
+  timer: 1500
+});
+navigate("/")
+        })
+        .catch(error =>console.log(error))
+      })
   };
-    // react hook end
+  // react hook end
 
 
   return (
@@ -47,7 +63,15 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
-              <input type="text"  {...register("name",{ required: true })}  placeholder="name" className="input input-bordered" required />
+              <input type="text"  {...register("name", { required: true })} placeholder="name" className="input input-bordered" required />
+              {errors.name && <span className="text-red-600">This field is required</span>}
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input type="text"  {...register("photoURL", { required: true })} placeholder="PhotoURL" className="input input-bordered" required />
               {errors.name && <span className="text-red-600">This field is required</span>}
             </div>
 
@@ -55,7 +79,7 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input type="email"  {...register("email",{ required: true })}  placeholder="email" className="input input-bordered" required />
+              <input type="email"  {...register("email", { required: true })} placeholder="email" className="input input-bordered" required />
               {errors.email && <span className="text-red-600">This field is required</span>}
             </div>
 
@@ -63,15 +87,16 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input type="password"  {...register("password",{required:true, 
-              minLength: 6,
-               maxLength: 20,
-              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
-              })}  placeholder="password" className="input input-bordered" required />
-               {errors.password?.type === 'required' && <span className="text-red-600">This Filed is required</span>}         
-               {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 required</span>}         
-               {errors.password?.type === 'maxLength' && <span className="text-red-600">Password must be 20 required</span>}         
-               {errors.password?.type === 'pattern' && <span className="text-red-600">At least one lowercase letter (a-z),At least one uppercase letter (A-Z),At least one digit (0-9),At least one special character from the set [@, $, !, %, *, ?, &],Minimum length of 6 characters</span>}         
+              <input type="password"  {...register("password", {
+                required: true,
+                minLength: 6,
+                maxLength: 20,
+                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
+              })} placeholder="password" className="input input-bordered" required />
+              {errors.password?.type === 'required' && <span className="text-red-600">This Filed is required</span>}
+              {errors.password?.type === 'minLength' && <span className="text-red-600">Password must be 6 required</span>}
+              {errors.password?.type === 'maxLength' && <span className="text-red-600">Password must be 20 required</span>}
+              {errors.password?.type === 'pattern' && <span className="text-red-600">At least one lowercase letter (a-z),At least one uppercase letter (A-Z),At least one digit (0-9),At least one special character from the set [@, $, !, %, *, ?, &],Minimum length of 6 characters</span>}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
               </label>
@@ -80,7 +105,7 @@ const Register = () => {
               <input type="submit" value="Sign Up" className="btn btn-primary"></input>
             </div>
           </form>
-        <p><small>Already have an account ? <Link to="/login">Login</Link></small></p>
+          <p><small>Already have an account ? <Link to="/login">Login</Link></small></p>
         </div>
       </div>
     </div>

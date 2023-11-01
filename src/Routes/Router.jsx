@@ -2,10 +2,12 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Login from '../Authentication/Login';
 import Register from '../Authentication/Register';
+import Secret from '../Component/Secret';
 import Home from '../Page/Home';
 import Main from '../Page/Main';
 import Menu from '../Page/Menu/Menu';
 import Order from '../Page/Order/Order';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ export const router = createBrowserRouter([
         {
           path:"register",
           element:<Register></Register>
+        },
+        {
+          path:"secret",
+          element:<PrivateRoute><Secret></Secret></PrivateRoute>
         }
     ]
   }

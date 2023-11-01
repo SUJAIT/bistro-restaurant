@@ -17,6 +17,7 @@ const NavBar = () => {
       <li><Link to="/">HOME</Link></li>
       <li><Link to="menu">OUR MENU</Link></li>
       <li><Link to="order/salad">ORDER</Link></li>
+       <li><Link to="secret">SECRET</Link></li>
       {
         user ? <div><li><Link onClick={handleLogOut}>LOGOUT</Link></li></div> : <div>  <li><Link to="login">LOGIN</Link></li></div>
       }
@@ -43,10 +44,13 @@ const NavBar = () => {
             <li><Link to="/">HOME</Link></li>
             <li><Link to="menu">OUR MENU</Link></li>
             <li><Link to="order/salad">ORDER</Link></li>
+            <li><Link to="secret">SECRET</Link></li>
             {
               user ? <div><li><Link onClick={handleLogOut}>LOGOUT</Link></li></div> : <div>  <li><Link to="login">LOGIN</Link></li></div>
             }
-            <li><Link to="register">SIGNIN</Link></li>
+            {
+              user ? <p></p>: <li><Link to="register">SIGNIN</Link></li>
+            }
           </ul>
         </div>
         <div className="navbar-end">

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../ContextApi/AuthProvider';
@@ -7,7 +7,9 @@ import useTitle from '../Sheared/Title';
 
 const Login = () => {
   useTitle("Login")
-
+ const navigate = useNavigate()
+ const location = useLocation();
+ const from = location.state?.from?.pathname || "/"
 
   const [disabled, setDisabled] = useState(true);
 
@@ -38,6 +40,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
         })
+        navigate(from,{replace:true});
       })
   }
 
