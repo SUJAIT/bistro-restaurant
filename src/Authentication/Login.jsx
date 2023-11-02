@@ -17,9 +17,12 @@ const Login = () => {
   const { signIn } = useContext(AuthContext)
   //firbase context api end
 
-  useEffect(() => {
+  //captcha length start
+    useEffect(() => {
     loadCaptchaEnginge(6);
   }, [])
+  //captcha length End
+
 
 
 
@@ -44,6 +47,7 @@ const Login = () => {
       })
   }
 
+  //captcha handling Function
   const handleValidateCaptcha = (e) => {
     const user_captcha_value = e.target.value;
     if (validateCaptcha(user_captcha_value) == true) {
