@@ -1,7 +1,7 @@
 import { useContext } from "react";
+import { AiOutlineShoppingCart } from 'react-icons/Ai';
 import { Link } from "react-router-dom";
 import { AuthContext } from "../ContextApi/AuthProvider";
-
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext)
@@ -17,7 +17,7 @@ const NavBar = () => {
       <li><Link to="/">HOME</Link></li>
       <li><Link to="menu">OUR MENU</Link></li>
       <li><Link to="order/salad">ORDER</Link></li>
-       <li><Link to="secret">SECRET</Link></li>
+      <li><Link to="secret">SECRET</Link></li>
       {
         user ? <div><li><Link onClick={handleLogOut}>LOGOUT</Link></li></div> : <div>  <li><Link to="login">LOGIN</Link></li></div>
       }
@@ -45,11 +45,19 @@ const NavBar = () => {
             <li><Link to="menu">OUR MENU</Link></li>
             <li><Link to="order/salad">ORDER</Link></li>
             <li><Link to="secret">SECRET</Link></li>
+            <li>
+              <Link to="/">
+                <button className="btn">
+                 <AiOutlineShoppingCart/>
+                  <div className="badge badge-sm badge-secondary">+99</div>
+                </button>
+              </Link>
+            </li>
             {
               user ? <div><li><Link onClick={handleLogOut}>LOGOUT</Link></li></div> : <div>  <li><Link to="login">LOGIN</Link></li></div>
             }
             {
-              user ? <p></p>: <li><Link to="register">SIGNIN</Link></li>
+              user ? <p></p> : <li><Link to="register">SIGNIN</Link></li>
             }
           </ul>
         </div>

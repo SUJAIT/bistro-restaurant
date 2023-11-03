@@ -22,7 +22,7 @@ const Register = () => {
     formState: { errors },
   } = useForm()
   // firbase working
-  const { createUser,updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const onSubmit = (data) => {
     console.log(data)
     // firbase working
@@ -31,19 +31,19 @@ const Register = () => {
         const loggedUser = result.user;
         console.log(loggedUser)
         updateUserProfile(data.name, data.photoURL)
-        .then(()=>{
-          console.log('user profile Updated')
-          reset()
-          Swal.fire({
-  position: 'top-center',
-  icon: 'success',
-  title: 'User Profile Updated Succesfully',
-  showConfirmButton: false,
-  timer: 1500
-});
-navigate("/")
-        })
-        .catch(error =>console.log(error))
+          .then(() => {
+            console.log('user profile Updated')
+            reset()
+            Swal.fire({
+              position: 'top-center',
+              icon: 'success',
+              title: 'User Profile Updated Succesfully',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            navigate("/")
+          })
+          .catch(error => console.log(error))
       })
   };
   // react hook end
@@ -63,6 +63,7 @@ navigate("/")
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
+              {/* react-from-hook-uses */}
               <input type="text"  {...register("name", { required: true })} placeholder="name" className="input input-bordered" required />
               {errors.name && <span className="text-red-600">This field is required</span>}
             </div>
@@ -71,6 +72,7 @@ navigate("/")
               <label className="label">
                 <span className="label-text">Photo URL</span>
               </label>
+              {/* react-from-hook-uses */}
               <input type="text"  {...register("photoURL", { required: true })} placeholder="PhotoURL" className="input input-bordered" required />
               {errors.name && <span className="text-red-600">This field is required</span>}
             </div>
@@ -79,6 +81,7 @@ navigate("/")
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
+              {/* react-from-hook-uses */}
               <input type="email"  {...register("email", { required: true })} placeholder="email" className="input input-bordered" required />
               {errors.email && <span className="text-red-600">This field is required</span>}
             </div>
@@ -87,6 +90,7 @@ navigate("/")
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
+              {/* react-from-hook-uses */}
               <input type="password"  {...register("password", {
                 required: true,
                 minLength: 6,
