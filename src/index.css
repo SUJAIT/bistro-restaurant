@@ -5,3 +5,10 @@
 /* .hero{
     background-image: url(../src/Banner/Img/banner.jpg);
 } */
+
+.nav{
+    color: white;
+}
+.menu{
+   background-color: transparent;
+}

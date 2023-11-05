@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { AiOutlineShoppingCart } from 'react-icons/Ai';
 import { Link } from "react-router-dom";
 import { AuthContext } from "../ContextApi/AuthProvider";
+import useCart from "../hooks/useCart";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext)
-
+const [cart] = useCart();
   const handleLogOut = () => {
     logOut()
       .then(() => { })
@@ -46,10 +47,10 @@ const NavBar = () => {
             <li><Link to="order/salad">ORDER</Link></li>
             <li><Link to="secret">SECRET</Link></li>
             <li>
-              <Link to="/">
+              <Link to="dashboard">
                 <button className="btn">
                  <AiOutlineShoppingCart/>
-                  <div className="badge badge-sm badge-secondary">+99</div>
+                  <div className="badge badge-sm badge-secondary">+{cart?.length || 0}</div>
                 </button>
               </Link>
             </li>
