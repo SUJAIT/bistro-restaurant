@@ -24,7 +24,7 @@ const Register = () => {
   // firbase working
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const onSubmit = (data) => {
-    console.log(data)
+
     // firbase working
     createUser(data.email, data.password)
       .then(result => {
@@ -32,8 +32,19 @@ const Register = () => {
         console.log(loggedUser)
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-            console.log('user profile Updated')
-            reset()
+            //
+            const saveUser = {name:data.name, email:data.email, img:data.photoURL, phoneNumber:data.number}
+            fetch("http://localhost:5000/users",{
+              method:"POST",
+              headers:{
+                'content-type':'application/json'
+              },
+              body:JSON.stringify(saveUser)
+            })
+            .then(res =>res.json())
+            .then(data =>{
+              if(data.insertedId){
+                        reset()
             Swal.fire({
               position: 'top-center',
               icon: 'success',
@@ -42,6 +53,10 @@ const Register = () => {
               timer: 1500
             });
             navigate("/")
+              }
+              //
+            })
+    
           })
           .catch(error => console.log(error))
       })
@@ -67,6 +82,20 @@ const Register = () => {
               <input type="text"  {...register("name", { required: true })} placeholder="name" className="input input-bordered" required />
               {errors.name && <span className="text-red-600">This field is required</span>}
             </div>
+
+
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Phone Number</span>
+              </label>
+              {/* react-from-hook-uses */}
+              <input type="number"  {...register("number", { required: true })} placeholder="number" className="input input-bordered" required />
+              {errors.number && <span className="text-red-600">This field is required</span>}
+            </div>
+
+
+
 
             <div className="form-control">
               <label className="label">

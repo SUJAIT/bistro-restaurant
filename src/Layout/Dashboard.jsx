@@ -5,10 +5,12 @@ import { FaHome, FaWallet } from 'react-icons/fa';
 import { GiShoppingCart } from 'react-icons/gi';
 import { GrMail } from 'react-icons/gr';
 import { NavLink, Outlet } from "react-router-dom";
+import useCart from '../hooks/useCart';
 
 
 
 const Dashboard = () => {
+  const [cart] = useCart()
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -25,7 +27,9 @@ const Dashboard = () => {
      <li><NavLink className="nav" to="/"><FaHome></FaHome> User Home</NavLink></li>
      <li><NavLink  className="nav" to="/dashboard/reserbation"><SlCalender/> Reservation</NavLink></li>
      <li><NavLink  className="nav" to="/dashboard/paymenthistory"><FaWallet></FaWallet> Payment History</NavLink></li>
-      <li><NavLink className="nav"  to="/dashboard/mycart"><GiShoppingCart></GiShoppingCart> My Cart</NavLink></li>
+      <li><NavLink className="nav"  to="/dashboard/mycart"><GiShoppingCart></GiShoppingCart> My Cart  <span className="badge badge-sm badge-secondary">+{cart?.length || 0}</span></NavLink>
+       
+      </li>
       <li><NavLink className="nav"  to="/dashboard/review"><GiShoppingCart></GiShoppingCart> Add Review</NavLink></li>
        <div className="divider"></div> 
        <li><NavLink><FaHome></FaHome> HOME</NavLink></li>

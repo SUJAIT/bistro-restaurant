@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../ContextApi/AuthProvider';
+import SocialLogIn from '../Sheared/SocialLogin/SocialLogIn';
 import useTitle from '../Sheared/Title';
 
 const Login = () => {
@@ -68,7 +69,7 @@ const Login = () => {
             <h1 className="text-5xl font-bold">Login now!</h1>
             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
           </div>
-          <div className="card  md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+          <div className="card  md:w-1/2 max-w-sm shadow-2xl ">
             <form onSubmit={handeLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -100,6 +101,7 @@ const Login = () => {
               </div>
             </form>
             <p><small>New Here?</small> <Link to="/register">Create an account</Link></p>
+            <SocialLogIn></SocialLogIn>
           </div>
         </div>
       </div>
