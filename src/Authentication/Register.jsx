@@ -32,14 +32,14 @@ const Register = () => {
         console.log(loggedUser)
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-            //
-            const saveUser = {name:data.name, email:data.email, img:data.photoURL, phoneNumber:data.number}
+            //Data base User Information sending Proccess start
+            const saveUser = {name:data.name, email:data.email, img:data.photoURL, phoneNumber:data.number} //The data Being Sent
             fetch("http://localhost:5000/users",{
               method:"POST",
               headers:{
                 'content-type':'application/json'
               },
-              body:JSON.stringify(saveUser)
+              body:JSON.stringify(saveUser)// saveUser Object Send
             })
             .then(res =>res.json())
             .then(data =>{
@@ -54,7 +54,7 @@ const Register = () => {
             });
             navigate("/")
               }
-              //
+              //Data base User Information sending Proccess End
             })
     
           })
