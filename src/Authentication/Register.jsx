@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import { AuthContext } from "../ContextApi/AuthProvider";
+import SocialLogIn from "../Sheared/SocialLogin/SocialLogIn";
 import useTitle from "../Sheared/Title";
 
 
@@ -139,6 +140,7 @@ const Register = () => {
             </div>
           </form>
           <p><small>Already have an account ? <Link to="/login">Login</Link></small></p>
+      <SocialLogIn></SocialLogIn>
         </div>
       </div>
     </div>

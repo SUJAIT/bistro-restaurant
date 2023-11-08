@@ -14,7 +14,25 @@ const SocialLogIn = () => {
         .then(result=>{
             const loggedInUser = result.user;
             console.log(loggedInUser);
+               //Data base User Information sending Proccess start
+            const saveUser = {name:loggedInUser.name, email:loggedInUser.email} //The data Being Sent
+            fetch("http://localhost:5000/users",{
+              method:"POST",
+              headers:{
+                'content-type':'application/json'
+              },
+              body:JSON.stringify(saveUser)// saveUser Object Send
+            })
+            .then(res =>res.json())
+            .then(data =>{
+              if(data.insertedId){
+             
+           
             navigate(from,{replace:true});
+              }
+              //Data base User Information sending Proccess End
+            })
+          
         })
     }
     return (
