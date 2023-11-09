@@ -4,6 +4,7 @@ import Login from '../Authentication/Login';
 import Register from '../Authentication/Register';
 import Secret from '../Component/Secret';
 import Dashboard from '../Layout/Dashboard';
+import AllUsers from '../Page/DashBoard/AllUsers';
 import MyCart from '../Page/DashBoard/MyCart/MyCart';
 import PaymentHistory from '../Page/DashBoard/PaymentHistory';
 import Home from '../Page/Home';
@@ -50,6 +51,11 @@ export const router = createBrowserRouter([
       {
         path: 'mycart',
         element:<MyCart></MyCart>,
+   
+      },
+      {
+        path: 'allusers',
+        element:<AllUsers></AllUsers>
    
       },
       {
