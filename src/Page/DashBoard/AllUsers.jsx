@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 const AllUsers = () => {
 
     // TenStack-Query 
-    const { isPending, error, data,refetch } = useQuery({
+    const { isPending, error, data, refetch } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
             fetch('http://localhost:5000/users').then(
@@ -22,6 +22,7 @@ const AllUsers = () => {
     if (error) return 'An error has occurred: ' + error.message
     //TenStack-Query End
 
+    // Admin Function Working Start
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH'
@@ -41,7 +42,7 @@ const AllUsers = () => {
                 }
             })
     }
-
+    //Admin Function Working End
     return (
         <div>
             {data.length}
@@ -85,6 +86,7 @@ const AllUsers = () => {
                                 </td>
 
                                 <td>
+                                    {/* Admin make button */}
                                     {
                                         user.role === 'admin' ? 'Admin' :
                                             <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-orange-600 text-white"><FaUserShield /></button>
