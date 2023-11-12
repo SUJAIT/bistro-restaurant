@@ -6,6 +6,7 @@ import { GiShoppingCart } from 'react-icons/gi';
 import { GrMail } from 'react-icons/gr';
 import { ImSpoonKnife } from 'react-icons/im';
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from '../hooks/useAdmin';
 import useCart from '../hooks/useCart';
 
 
@@ -13,7 +14,9 @@ import useCart from '../hooks/useCart';
 const Dashboard = () => {
   const [cart] = useCart()
 //TODO : admin server site connection Workin is Loading
-const isAdmin = true;
+// const isAdmin = true;
+
+const [isAdmin] = useAdmin();
 
     return (
         <div>

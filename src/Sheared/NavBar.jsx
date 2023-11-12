@@ -47,7 +47,7 @@ const [cart] = useCart();
             <li><Link to="order/salad">ORDER</Link></li>
             <li><Link to="secret">SECRET</Link></li>
             <li>
-              <Link to="dashboard">
+              <Link to="dashboard/mycart">
                 <button className="btn">
                  <AiOutlineShoppingCart/>
                   <div className="badge badge-sm badge-secondary">+{cart?.length || 0}</div>

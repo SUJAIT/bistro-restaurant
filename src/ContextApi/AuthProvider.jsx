@@ -44,10 +44,10 @@ const AuthProvider = ({ children }) => {
     // Google Probider start
     const googleProvider = new GoogleAuthProvider();
 
-const googleSignIn = () =>{
-    setLoading(true);
-    return signInWithPopup(auth,googleProvider)
-}
+    const googleSignIn = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider)
+    }
     // Google Probider End
 
 
@@ -57,20 +57,21 @@ const googleSignIn = () =>{
             setUser(currentUser);
             console.log('current user', currentUser)
 
-//get and set token 
+            //get and set token 
 
-if(currentUser){
-    axios.post('http://localhost:5000/jwt', {email: currentUser.email})
-.then(data =>{
-    console.log(data)
-    localStorage.setItem('access-token',data.data.token)
-})
-}
-else{
-    localStorage.removeItem('access-token')
-}
-//jwt process end 
-            setLoading(false);
+            if (currentUser) {
+                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                    .then(data => {
+                        console.log(data)
+                        localStorage.setItem('access-token', data.data.token)
+                        setLoading(false);
+                    })
+            }
+            else {
+                localStorage.removeItem('access-token')
+            }
+            //jwt process end 
+
         });
         return () => {
             return unsubscribe();

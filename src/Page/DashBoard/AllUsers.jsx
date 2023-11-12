@@ -2,17 +2,29 @@
 import { useQuery } from '@tanstack/react-query';
 import { FaTrash, FaUserShield } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/UseAxiosSecure';
 
 
 
 const AllUsers = () => {
+        const [axiosSecure] = useAxiosSecure();
 
-    // TenStack-Query 
+
+    // // TenStack-Query 
+    // const { isPending, error, data, refetch } = useQuery({
+    //     queryKey: ['repoData'],
+    //     queryFn: () =>
+    //         fetch('http://localhost:5000/users').then(
+    //             (res) => res.json(),
+    //         ),
+    // })
+
+        // TenStack-Query 
     const { isPending, error, data, refetch } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
-            fetch('http://localhost:5000/users').then(
-                (res) => res.json(),
+            axiosSecure.get('/users').then(
+                (res) => res.data,
             ),
     })
 
