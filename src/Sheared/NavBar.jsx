@@ -46,7 +46,9 @@ const [cart] = useCart();
             <li><Link to="menu">OUR MENU</Link></li>
             <li><Link to="order/salad">ORDER</Link></li>
             <li><Link to="secret">SECRET</Link></li>
-            <li>
+            {
+              user ? <div>
+                  <li>
               <Link to="dashboard/mycart">
                 <button className="btn">
                  <AiOutlineShoppingCart/>
@@ -54,6 +56,9 @@ const [cart] = useCart();
                 </button>
               </Link>
             </li>
+              </div>:<p></p>
+            }
+          
             {
               user ? <div><li><Link onClick={handleLogOut}>LOGOUT</Link></li></div> : <div>  <li><Link to="login">LOGIN</Link></li></div>
             }

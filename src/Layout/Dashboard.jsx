@@ -35,7 +35,7 @@ const [isAdmin] = useAdmin();
         <>
             {/* Sidebar content here */}
      <li><NavLink className="nav" to="/"><FaHome></FaHome> Admin Home</NavLink></li>
-     <li><NavLink  className="nav" to="/dashboard/reserbation"><ImSpoonKnife/> Add Items</NavLink></li>
+     <li><NavLink  className="nav" to="/dashboard/additems"><ImSpoonKnife/> Add Items</NavLink></li>
      <li><NavLink  className="nav" to="/dashboard/paymenthistory"><FaWallet></FaWallet> Manage Items</NavLink></li>
       <li><NavLink className="nav"  to="/dashboard/mycart"><GiShoppingCart></GiShoppingCart> Manage Bookings</NavLink>
        
