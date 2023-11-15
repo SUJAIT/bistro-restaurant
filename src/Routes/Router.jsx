@@ -5,6 +5,7 @@ import Register from '../Authentication/Register';
 import Secret from '../Component/Secret';
 import Dashboard from '../Layout/Dashboard';
 import AdItems from '../Page/DashBoard/Admin/AdItems';
+import ManageItems from '../Page/DashBoard/Admin/ManageItems';
 import AllUsers from '../Page/DashBoard/AllUsers';
 import MyCart from '../Page/DashBoard/MyCart/MyCart';
 import PaymentHistory from '../Page/DashBoard/PaymentHistory';
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path:'additems',
         element:<AdminRoute><AdItems></AdItems></AdminRoute> 
+      },
+      {
+        path:'manageitems',
+        element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
       }
     ]
   }
