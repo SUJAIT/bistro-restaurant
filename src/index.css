@@ -6,9 +6,24 @@
     background-image: url(../src/Banner/Img/banner.jpg);
 } */
 
+ #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
 .nav{
     color: white;
 }
 .menu{
    background-color: transparent;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: var(--navbar-padding, 0.5rem/* 8px */);
+    min-height: 4rem/* 64px */;
+    width: 88%;
 }

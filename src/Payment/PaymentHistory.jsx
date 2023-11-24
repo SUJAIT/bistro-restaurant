@@ -3,7 +3,8 @@ import React from 'react';
 const PaymentHistory = () => {
     return (
         <div>
-            <h1>Payment history</h1>
+           
+            <h1>Payment History</h1>
         </div>
     );
 };

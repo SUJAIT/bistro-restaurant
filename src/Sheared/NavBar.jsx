@@ -3,6 +3,7 @@ import { AiOutlineShoppingCart } from 'react-icons/Ai';
 import { Link } from "react-router-dom";
 import { AuthContext } from "../ContextApi/AuthProvider";
 import useCart from "../hooks/useCart";
+import logo from "../img/logo.png";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext)
@@ -28,7 +29,7 @@ const [cart] = useCart();
 
   return (
     <div >
-      <div className="navbar fixed z-10 bg-opacity-30 max-w-screen-2xl bg-black text-white">
+      <div className="navbar fixed z-10 bg-opacity-30  bg-black text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,7 +39,7 @@ const [cart] = useCart();
               {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+      <img src={logo} alt="" />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
