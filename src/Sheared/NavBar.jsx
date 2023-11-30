@@ -73,6 +73,10 @@ const [cart] = useCart();
         </div>
       </div>
     </div>
+
+  
+
+
   );
 };
 

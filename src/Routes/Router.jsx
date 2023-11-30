@@ -14,7 +14,6 @@ import Main from '../Page/Main';
 import Menu from '../Page/Menu/Menu';
 import Order from '../Page/Order/Order';
 import Payment from '../Payment/Payment';
-import PaymentHistory from '../Payment/PaymentHistory';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import AdminRoute from './AdminRoute';
 
@@ -59,18 +58,15 @@ export const router = createBrowserRouter([
 
       },
       {
+        path: "payment",
+        element: <Payment></Payment>
+      },
+      {
         path: 'allusers',
         element: <AdminRoute><AllUsers></AllUsers>
         </AdminRoute>
       },
-      {
-        path: 'payment',
-        element: <Payment></Payment>
-      },
-      {
-        path: 'paymenthistory',
-        element: <PaymentHistory></PaymentHistory>
-      },
+
       {
         path: 'additems',
         element: <AdminRoute><AdItems></AdItems></AdminRoute>
